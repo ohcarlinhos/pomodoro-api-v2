@@ -1,26 +1,18 @@
 import { Router } from "express";
+
 import { ExpressServer } from "./Server/ExpressServer";
+import { ExpressCorsConfig } from "./Server/ExpressCorsConfig";
+import { ExpressRoutesConfig } from "./Server/ExpressRoutesConfig";
 
-const router = Router()
+const router = Router();
 
-router.get('/pomodoro', (_, res) => {
-    return res.send([{
-        Date: new Date(),
-        Title: "Example",
-        Events: [
-            {
-                Type: 'start',
-                Time: new Date()
-            },
-            {
-                Type: 'end',
-                Time: new Date()
-            }
+router.get("/", (_, res) => {
+    return res.json({ message: "Hello World" });
+});
 
-        ]
-    }])
-})
+const App = new ExpressServer(3000);
 
-const app = new ExpressServer(3000, router);
-app.Run()
+App.Add(new ExpressCorsConfig());
+App.Add(new ExpressRoutesConfig(router));
 
+App.Run();
