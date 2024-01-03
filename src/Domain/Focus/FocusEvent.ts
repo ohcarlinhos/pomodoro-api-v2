@@ -1,4 +1,4 @@
-import { FocusEventTypes, IFocusEvent } from "./Types";
+import { FocusEventTypes, IFocusEvent } from "./FocusTypes";
 
 export class FocusEvent implements IFocusEvent {
     Type: FocusEventTypes;

@@ -1,11 +1,13 @@
-import { IFocusEvent, IFocusStatus } from "./Types";
+import { IFocusEvent, IFocusStatus } from "./FocusTypes";
 
 export class FocusStatus implements IFocusStatus {
+    Id: string | null;
     Title: string;
     RegisterDate: Date;
     Events: IFocusEvent[];
 
-    constructor(title: string, date: Date, events: IFocusEvent[]) {
+    constructor(title: string, date: Date, events: IFocusEvent[], id: string | null = null) {
+        this.Id = id
         this.Title = title;
         this.RegisterDate = date;
         this.Events = events;
