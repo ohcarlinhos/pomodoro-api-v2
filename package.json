@@ -8,7 +8,8 @@
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "dev": "ts-node-dev src/init.ts"
+    "dev": "ts-node-dev src/init.ts",
+    "db": "ts-node-dev src/db.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
