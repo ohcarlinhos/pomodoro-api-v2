@@ -1,15 +1,26 @@
-import { DatabaseClient } from "./Database/DatabaseClient";
-import { DatabaseConfig } from "./Database/DatabaseConfig";
+import 'dotenv/config'
+
+import { DatabasePgClient } from "./Database/DatabasePgClient";
+import { DatabasePgConfig } from "./Database/DatabasePgConfig";
+import { MigrationHandle } from "./Database/Migrations/MigrationHandle";
+
+import { UserMigrationQueries } from "./Database/Migrations/Queries/UserMigrationQueries";
+
+const migrationQueries = [new UserMigrationQueries()];
 
 async function doMigrates() {
-    const client = new DatabaseClient(DatabaseConfig.Get("test"));
+    const databaseConfig = new DatabasePgConfig();
+    const databaseClient = new DatabasePgClient(databaseConfig.Get());
 
-    await client.Connect();
+    await databaseClient.Connect();
 
-    const result = await client.Query(`SELECT NOW()`);
+    const migrationHandle = new MigrationHandle(
+        databaseClient,
+        migrationQueries,
+    );
+    await migrationHandle.Up();
 
-    console.log(result.rows[0]);
-    await client.End();
+    await databaseClient.End();
 }
 
 doMigrates();
