@@ -1,4 +1,5 @@
-import { IFocusEvent, IFocusStatus } from "./FocusTypes";
+import { IFocusEvent } from "./Types/IFocusEvent";
+import { IFocusStatus } from "./Types/IFocusStatus";
 
 export class FocusStatus implements IFocusStatus {
     Id: string | null;

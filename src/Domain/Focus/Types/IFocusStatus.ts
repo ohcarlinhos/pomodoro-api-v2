@@ -1,9 +1,4 @@
-export type FocusEventTypes = "start" | "stop" | "restart" | "end";
-
-export interface IFocusEvent {
-    Type: FocusEventTypes;
-    RegisterDate: Date;
-};
+import { IFocusEvent } from "./IFocusEvent";
 
 export interface IFocusStatus {
     Id: string | null;
