@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { Router } from "express";
 
 import { ExpressServer } from "./Server/ExpressServer";
