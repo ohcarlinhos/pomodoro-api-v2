@@ -4,7 +4,7 @@ import { IMigration } from "./Types/IMigration";
 
 import { Migration } from "./Migration";
 
-export class MigrationHandle implements IMigration {
+export class MigrationHandler implements IMigration {
     private _migrations: IMigration[] = [];
 
     constructor(databaseClient: IDatabaseClient, queries: IMigrationQueries[]) {
