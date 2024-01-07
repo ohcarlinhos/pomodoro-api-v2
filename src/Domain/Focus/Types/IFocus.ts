@@ -1,7 +1,7 @@
 import { IFocusEvent } from "./IFocusEvent";
 
-export interface IFocusStatus {
-    Id: string | null;
+export interface IFocus {
+    Id?: string;
     Title: string;
     RegisterDate: Date;
     Events: IFocusEvent[];

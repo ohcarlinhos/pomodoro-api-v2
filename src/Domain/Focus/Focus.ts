@@ -1,14 +1,14 @@
 import { IFocusEvent } from "./Types/IFocusEvent";
-import { IFocusStatus } from "./Types/IFocusStatus";
+import { IFocus } from "./Types/IFocus";
 
-export class FocusStatus implements IFocusStatus {
-    Id: string | null;
+export class Focus implements IFocus {
+    Id?: string;
     Title: string;
     RegisterDate: Date;
     Events: IFocusEvent[];
 
-    constructor(title: string, date: Date, events: IFocusEvent[], id: string | null = null) {
-        this.Id = id
+    constructor(title: string, date: Date, events: IFocusEvent[], id?: string) {
+        if (id) this.Id = id;
         this.Title = title;
         this.RegisterDate = date;
         this.Events = events;
