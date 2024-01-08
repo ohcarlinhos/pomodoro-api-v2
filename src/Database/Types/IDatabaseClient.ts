@@ -1,5 +1,5 @@
 export interface IDatabaseClient {
     Connect(): Promise<void>;
     End(): Promise<void>;
-    Query<T>(queryString: string): Promise<T>;
+    Query(queryString: string): Promise<unknown>;
 }
