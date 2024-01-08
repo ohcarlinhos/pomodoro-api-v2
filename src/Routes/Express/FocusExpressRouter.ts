@@ -1,7 +1,7 @@
 import { UsersController } from "../../Controllers/UsersController";
 import { ExpressRouter } from "./Types/ExpressRouter";
 
-export class FocusRouter extends ExpressRouter {
+export class FocusExpressRouter extends ExpressRouter {
     Main(): void {
         const usersController = new UsersController();
 

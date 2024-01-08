@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-export class RouterHandler {
+export class ExpressRouterHandler {
     private _routers: Router[];
     private _name: string;
 
