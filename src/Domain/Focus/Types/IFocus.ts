@@ -5,5 +5,6 @@ export interface IFocus {
     Title: string;
     RegisterDate: Date;
     Events: IFocusEvent[];
+    GetDTO(): Partial<IFocus>;
     GetTotalDuration(): number;
 }
