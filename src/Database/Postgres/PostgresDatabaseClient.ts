@@ -18,7 +18,7 @@ export class PostgresDatabaseClient implements IDatabaseClient {
         await this._client.end();
     }
 
-    async Query<T>(queryString: string): Promise<T> {
-        return this._client.query(queryString) as T;
+    async Query(queryString: string) {
+        return this._client.query(queryString);
     }
 }
