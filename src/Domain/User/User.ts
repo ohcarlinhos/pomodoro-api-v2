@@ -6,15 +6,20 @@ export class User implements IUser {
     Email: string;
     Password: string;
 
-    constructor(
-        id: string | null,
-        name: string,
-        email: string,
-        password: string
-    ) {
-        if (id) this.Id = id;
+    constructor(name: string, email: string, password: string) {
         this.Name = name;
         this.Email = email;
         this.Password = password;
+    }
+
+    GetDTO(): Partial<IUser> {
+        const user: Partial<IUser> = {
+            Name: this.Name,
+            Email: this.Email,
+        };
+
+        if (this.Id) user.Id = this.Id;
+
+        return user;
     }
 }
