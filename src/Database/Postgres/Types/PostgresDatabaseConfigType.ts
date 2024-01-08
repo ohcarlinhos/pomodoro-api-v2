@@ -1,4 +1,4 @@
-export type DatabasePgConfigType = {
+export type PostgresDatabaseConfigType = {
     host: string;
     port: number;
     database: string;

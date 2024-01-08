@@ -1,8 +1,8 @@
-import { IDatabaseConfig } from "./Types/IDatabaseConfig";
-import { DatabasePgConfigType } from "./Types/DatabasePgConfigType";
+import { IDatabaseConfig } from "../Types/IDatabaseConfig";
+import { PostgresDatabaseConfigType } from "./Types/PostgresDatabaseConfigType";
 
-export class DatabasePgConfig implements IDatabaseConfig {
-    public Get(): DatabasePgConfigType {
+export class PostgresDatabaseConfig implements IDatabaseConfig {
+    public Get(): PostgresDatabaseConfigType {
         const {
             PG_HOST = "localhost",
             PG_PORT = 5432,
@@ -10,8 +10,6 @@ export class DatabasePgConfig implements IDatabaseConfig {
             PG_USER = "postgres",
             PG_PASSWORD = "1234",
         } = process.env;
-
-        console.log(process.env);
 
         return {
             host: PG_HOST,
