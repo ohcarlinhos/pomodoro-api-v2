@@ -5,11 +5,10 @@ import { IService } from "./IService";
 
 export abstract class DatabaseService implements IService {
     protected _databaseClient: IDatabaseClient;
-    protected _entity: Entity;
+    protected abstract _entity: Entity;
 
-    constructor(entity: Entity) {
+    constructor() {
         this._databaseClient = DatabaseClient;
-        this._entity = entity;
     }
 
     abstract Run(): Promise<unknown>;
