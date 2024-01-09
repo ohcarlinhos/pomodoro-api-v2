@@ -1,8 +1,8 @@
-import { IDatabaseClient } from "../../Types/IDatabaseClient";
+import { PostgresDatabaseClient } from "../../Postgres/PostgresDatabaseClient";
 import { DatabaseClient } from "../..";
 
 export abstract class Entity {
-    protected _databaseClient: IDatabaseClient;
+    protected _databaseClient: PostgresDatabaseClient;
     protected _tableName: string;
 
     constructor(tableName: string) {
@@ -10,22 +10,37 @@ export abstract class Entity {
         this._tableName = tableName;
     }
 
-    async SelectById(
-        id: string | number,
-        options = {
-            cols: ["*"],
+    protected async _selectById(id: number, cols = ["*"]) {
+        try {
+            await this._databaseClient.Connect();
+            const result = await this._databaseClient.Query(`
+                select
+                        ${cols.join(", ")}
+                from
+                        ${this._tableName}
+                where
+                        id = ${id};
+            `);
+            return result.rows;
+        } finally {
+            await this._databaseClient.End();
         }
-    ) {
-        await this._databaseClient.Connect();
-        await this._databaseClient.Query(`
-select
-        ${options.cols.join(", ")}
-from
-        ${this._tableName}
-where
-        id = ${id};
-        `);
+    }
 
-        await this._databaseClient.End();
+    protected async _selectByUuid(uuid: string, cols = ["*"]) {
+        try {
+            await this._databaseClient.Connect();
+            const result = await this._databaseClient.Query(`
+                select
+                        ${cols.join(", ")}
+                from
+                        ${this._tableName}
+                where
+                        id = ${uuid};
+            `);
+            return result.rows;
+        } finally {
+            await this._databaseClient.End();
+        }
     }
 }
