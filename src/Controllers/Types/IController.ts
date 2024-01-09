@@ -1,7 +1,7 @@
 export interface IController {
     GetAll(): Promise<unknown[]>;
-    Get(id: string): Promise<unknown| null>;
-    Post(data: unknown): Promise<unknown>;
-    Put(data: unknown): Promise<unknown>;
-    Delete(id: string): Promise<void>;
+    Get(id: unknown): Promise<unknown| null>;
+    Create(data: unknown): Promise<unknown>;
+    Update(data: unknown): Promise<unknown>;
+    Delete(id: unknown): Promise<void>;
 }
