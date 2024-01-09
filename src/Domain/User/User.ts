@@ -1,7 +1,7 @@
 import { IUser } from "./Types/IUser";
 
 export class User implements IUser {
-    Id?: string;
+    Id?: number;
     Name: string;
     Email: string;
     Password?: string;
