@@ -10,6 +10,7 @@ export class ExpressServer implements IServer<Express> {
     constructor(port: number) {
         this.App = express();
         this._port = port;
+        this._config();
     }
 
     private _config() {
@@ -17,8 +18,6 @@ export class ExpressServer implements IServer<Express> {
     }
 
     public Run() {
-        this._config();
-
         this.App.listen(this._port, () => {
             console.log(`Server started on http://localhost:${this._port}`);
         });
