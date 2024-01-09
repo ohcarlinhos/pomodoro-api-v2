@@ -12,5 +12,5 @@ export abstract class DatabaseService implements IService {
         this._entity = entity;
     }
 
-    abstract Run(): Promise<void>;
+    abstract Run(): Promise<unknown>;
 }
