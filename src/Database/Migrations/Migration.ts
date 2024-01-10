@@ -12,10 +12,10 @@ export class Migration implements IMigration {
     }
 
     async Up(): Promise<void> {
-        await this._databaseClient.Query(this._queries.UpQuery);
+        await this._databaseClient.OnlyQuery(this._queries.UpQuery);
     }
 
     async Down(): Promise<void> {
-        await this._databaseClient.Query(this._queries.DownQuery);
+        await this._databaseClient.OnlyQuery(this._queries.DownQuery);
     }
 }
