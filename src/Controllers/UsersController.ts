@@ -1,6 +1,7 @@
 import { IUser } from "../Domain/User/Types/IUser";
 import { User } from "../Domain/User/User";
 import { AddUserService } from "../Services/User/AddUserService";
+import { GetUserService } from "../Services/User/GetUserService";
 import { IController } from "./Types/IController";
 
 type CreateUserPayload = {
@@ -11,9 +12,7 @@ type CreateUserPayload = {
 
 export class UsersController implements Partial<IController> {
     async Get(id: number): Promise<Partial<IUser>> {
-        const user = await new User("Carlos", "teste@test.com");
-        user.Id = id;
-        return user.GetDTO();
+        return new GetUserService(id).Run();
     }
 
     async GetAll(): Promise<Partial<IUser>[]> {
@@ -28,6 +27,6 @@ export class UsersController implements Partial<IController> {
         const { name, email, password } = user;
         const newUser = new User(name, email);
         newUser.Password = password;
-        return await new AddUserService(newUser).Run();
+        return new AddUserService(newUser).Run();
     }
 }
