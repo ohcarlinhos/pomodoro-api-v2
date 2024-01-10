@@ -9,8 +9,9 @@ export class UsersExpressRouter extends ExpressRouter {
             res.json(controller.GetAll());
         });
 
-        this._router.get("/:id/", (req, res) => {
-            res.json(controller.Get(parseInt(req.params.id)));
+        this._router.get("/:id/", async (req, res) => {
+            const result = await controller.Get(parseInt(req.params.id));
+            res.json(result);
         });
 
         this._router.post("/", async (req, res) => {
