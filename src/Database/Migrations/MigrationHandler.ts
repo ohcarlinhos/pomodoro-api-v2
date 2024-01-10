@@ -21,7 +21,7 @@ export class MigrationHandler implements IMigration {
 
     async Down(): Promise<void> {
         for (let i = 0; i < this._migrations.length; i++) {
-            await this._migrations[i].Down();
+            await this._migrations[this._migrations.length - i].Down();
         }
     }
 }
