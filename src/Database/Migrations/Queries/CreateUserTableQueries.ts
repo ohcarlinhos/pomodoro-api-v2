@@ -1,6 +1,6 @@
 import { IMigrationQueries } from "./Types/IMigrationQueries";
 
-export class UserMigrationQueries implements IMigrationQueries {
+export class CreateUserTableQueries implements IMigrationQueries {
     readonly UpQuery = `
 create table if not exists users (
     id serial primary key,

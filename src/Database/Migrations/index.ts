@@ -1,3 +1,3 @@
-import { UserMigrationQueries } from "./Queries/UserMigrationQueries";
+import { CreateUserTableQueries } from "./Queries/CreateUserTableQueries";
 
-export const MigrationQueries = [new UserMigrationQueries()];
+export const MigrationQueries = [new CreateUserTableQueries()];
