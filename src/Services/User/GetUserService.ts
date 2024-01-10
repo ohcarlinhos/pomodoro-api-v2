@@ -12,7 +12,7 @@ export class GetUserService extends DatabaseService {
     }
 
     async Run() {
-        // TODO: implementar serviço
-        // await this._entity.SelectById(this._id);
+        const user = await this._entity.SelectById(this._id);
+        return user.GetDTO();
     }
 }
